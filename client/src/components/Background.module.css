@@ -2,8 +2,114 @@
 #background-component{
     z-index: -1;
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    background: #0C3F70;
     background: radial-gradient(at center top, var(--blueGradient), var(--orangeRun));
+    background-size: 200% 200%;
+    animation: gradientAnimation 5s ease-in-out 0s infinite forwards;
+    animation-direction: alternate;
+}
+@keyframes gradientAnimation {
+    0%{
+        background-position: 100%  20%;
+    }
+    100%{
+        background-position: 20%  100%;
+    }
+}
+#diamonds-container{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 100;
+    left: 0; 
+}
+#diamonds-container img{
+    display: block;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    opacity: 0.3;
+    animation: diamondsAnimation 5s ease-in-out 0s infinite forwards;
+    animation-direction: alternate;
+}
+#diamonds-container img:nth-child(1){
+    height: 25px;
+    width: 25px;
+    left: 200px;
+    top: 200px;
+    animation-duration: 5s;
+}
+#diamonds-container img:nth-child(3){
+    height: 10px;
+    width: 10px;
+    left: 700px;
+    top: 300px;
+    animation-duration: 4s;
+}
+#diamonds-container img:nth-child(5){
+    height: 35px;
+    width: 35px;
+    left: 330px;
+    top: 100px;
+    animation-duration: 6s;
+}
+#diamonds-container img:nth-child(4){
+    height: 20px;
+    width: 20px;
+    left: 800px;
+    top: 450px;
+    animation-duration: 3s;
+}
+#diamonds-container img:nth-child(6){
+    height: 15px;
+    width: 15px;
+    right: 100px;
+    top: 250px;
+    animation-duration: 4s;
+}
+#diamonds-container img:nth-child(7){
+    height: 40px;
+    width: 40px;
+    right: 500px;
+    top:150px;
+    animation-duration: 2s;
+}
+#diamonds-container img:nth-child(8){
+    height: 15px;
+    width: 15px;
+    left: 400px;
+    top: 300px;
+    animation-duration: 5s;
+}
+#diamonds-container img:nth-child(9){
+    height: 35px;
+    width: 35px;
+    left: 600px;
+    top:100px;
+    animation-duration: 3s;
+} 
+#diamonds-container img:nth-child(2){
+    height: 55px;
+    width: 55px;
+    left: 850px;
+    top:600px;
+    animation-duration: 3s;
+} 
+@keyframes diamondsAnimation {
+    0%{
+        transform: translateX(15px) translateY(20px) rotate(90deg);
+    }
+    33%{
+        transform: translateX(0px) translateY(0px) rotate(0deg); 
+    }
+    66%{
+        transform: translateX(-15px) translateY(-20px) rotate(-90deg); 
+    }
+    100%{
+        transform: translateX(0px) translateY(0px) rotate(0deg);
+    }
 }

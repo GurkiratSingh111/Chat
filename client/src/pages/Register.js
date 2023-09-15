@@ -23,6 +23,15 @@ function Register() {
           }}
         ></input>
         <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={""}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        ></input>
+        <input
           type="password"
           name="password"
           placeholder="Password"
