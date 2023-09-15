@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Black+Ops+One&family=Oswald&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Acme', sans-serif;
+    overflow: hidden;
+    /*font-family: 'Black Ops One', cursive;
+    font-family: 'Oswald', sans-serif;*/
+}
