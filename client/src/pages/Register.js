@@ -36,7 +36,8 @@ function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
     if (handleFormValidation()){
-      await axios.post(register_api,{username,password,email});
+      console.log('there');
+      await axios.post('http://localhost:4040/api/register',{username,password,email});
     }
     console.log("button was pressed");
   }
