@@ -34,6 +34,7 @@
     color: wheat;
     border: none;
     padding: 0.5rem 1rem;
+    cursor: pointer;
 }
 .register-form span{
     margin: 1rem 0rem;

@@ -15,17 +15,18 @@ app.get('/',(req,res)=>{
     res.send('backend');
 })
 
-/*
+
 mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log('connected to db')
     app.listen(process.env.PORT,()=>{
-        console.log('server is started !');
+        console.log('server is started');
     })
 }).catch((err)=>{
     console.log(" couldn't connect to the db");
-}) */
+}) 
 
+/*
 app.listen(process.env.PORT,()=>{
     console.log('server is started !');
-})
+})*/
 

@@ -37,12 +37,13 @@ function Register() {
     e.preventDefault();
     if (handleFormValidation()){
       console.log('there');
-      await axios.post('http://localhost:4040/api/register',{username,password,email});
+      const {data} = await axios.post('http://localhost:4040/api/register',{username,password,email});
+      console.log(data);
     }
     console.log("button was pressed");
   }
 
-
+  
   return (
     <>
     <div id={styles["register-container"]}>
