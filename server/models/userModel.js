@@ -20,10 +20,9 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
-        min: 4,
-        select: false
+        min: 4
     }
-},{timestamps});
+});
 // select: false => so we don't include password in returned user after User.create({})....
 
 userSchema.pre('save',async function(next){

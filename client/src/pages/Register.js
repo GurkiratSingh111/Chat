@@ -16,15 +16,15 @@ function Register() {
   function handleFormValidation(){
     if(username.length < 4){
       console.log('I am here')
-      setErrorMessage( <ErrorToast text={'username must have more than 3 characters'} isFail={true}/>);
+      setErrorMessage( <ErrorToast text={'username must have more than 3 characters'} isFail={true} stop={setErrorMessage}/>);
       return false;
     }
     else if (password.length <= 4){
-      setErrorMessage( <ErrorToast text={'password must have more than 4 characters'} isFail={true}/>);
+      setErrorMessage( <ErrorToast text={'password must have more than 4 characters'} isFail={true} stop={setErrorMessage}/>);
       return false;
     }
     else if(password !== confirmPassword){
-      setErrorMessage( <ErrorToast text={'Passwords don\'t match'} isFail={true}/>);
+      setErrorMessage( <ErrorToast text={'Passwords don\'t match'} isFail={true} stop={setErrorMessage}/>);
       console.log('I did run!')
       return false;
     }
@@ -36,10 +36,9 @@ function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
     const verifiedForm = handleFormValidation();
-    setTimeout(()=>{setErrorMessage(null)},5000);
     if (verifiedForm){
       console.log('there');
-      const {data} = await axios.post('http://localhost:4040/api/register',{username,password,email});
+      const {data} = await axios.post(register_api,{username,password,email});
       console.log(data);
     }
     console.log("button was pressed");

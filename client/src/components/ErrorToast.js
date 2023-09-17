@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import styles from "./ErrorToast.module.css";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import { PiSealWarningFill } from "react-icons/pi";
-export default function ErrorToast({ text, isFail }) {
+export default function ErrorToast({ text, isFail,stop }) {
   const [isOver, setIsOver] = useState(false);
 
-  /*
   useEffect(() => {
     setTimeout(() => {
-      setIsOver(true);
+      stop(null);
     }, 5000);
-  }, []); */
+  }, []);
 
   const errorToastJSX = (
     <div className={styles["box-container"]}>
@@ -32,12 +31,12 @@ export default function ErrorToast({ text, isFail }) {
         )}
         <p className={styles["toast-child"]}>{text}</p>
         <span
-          className={`${styles["toast-child"]}  ${styles["toast-cross-sign"]}`}
+          className={`${styles["toast-child"]}  ${styles["toast-cross-sign"]}`} onClick={()=>{stop(null)}}
         >
           x
         </span>
       </div>
-      <div className={styles["box-time-line"]}></div>
+      <div className={`${styles["box-time-line"]} ${isFail?styles["red"]:styles["green"]}`}></div>
     </div>
   );
   return(errorToastJSX);
