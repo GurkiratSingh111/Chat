@@ -20,9 +20,11 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
-        min: 4
+        min: 4,
+        select: false
     }
-});
+},{timestamps});
+// select: false => so we don't include password in returned user after User.create({})....
 
 userSchema.pre('save',async function(next){
     const salt = await bcrypt.genSalt();

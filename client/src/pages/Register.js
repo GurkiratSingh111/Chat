@@ -35,7 +35,9 @@ function Register() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (handleFormValidation()){
+    const verifiedForm = handleFormValidation();
+    setTimeout(()=>{setErrorMessage(null)},5000);
+    if (verifiedForm){
       console.log('there');
       const {data} = await axios.post('http://localhost:4040/api/register',{username,password,email});
       console.log(data);

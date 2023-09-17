@@ -1,11 +1,15 @@
-.toast-container{
+.box-container{
     position: absolute;
     bottom: 50px;
     right: 50px;
     z-index: 1;
     width: 250px;
     color: wheat;
-    border-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
+.toast-container{
+    width: 100%;
     padding: 5px;
     display: flex;
     justify-content: space-between;
@@ -28,4 +32,18 @@
 }
 .toast-container-pass{
     background-color: rgba(0, 128, 0, 0.296);
+}
+.box-time-line{
+    width: 100%;
+    height: 5px;
+    background-color: rgb(167, 6, 6);
+    animation: timeLineAnimation 5s ease 0.2s 1 ;
+}
+@keyframes timeLineAnimation {
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 0%;
+    }
 }
