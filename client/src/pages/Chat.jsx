@@ -3,18 +3,24 @@ import { useEffect, useState } from "react";
 import { userPage_api } from "../utils/routes";
 export default function Chat() {
   const [user, setUser] = useState("");
-  const getUser = async function () {
-    const { data } = await axios.get(userPage_api, {} , { withCredentials: true });
-    return data.name;
-  };
+  
+
   useEffect(() => {
-    getUser().then((name) => {
-      setUser(name);
-    }).catch((err)=>{setUser('')});
+    const verifyUser = async () => {
+      /*if (!cookies.jwt) {
+        console.log('Chat.jsx: NO JWT token')
+      } 
+      else {*/
+        const { data } = await axios.post(
+        userPage_api,{},{withCredentials: true,});
+        console.log('IN REACT:')
+        console.log(data);
+        setUser(data.email);
+      };
+    verifyUser();
   }, []);
-  return (
-    <> 
-    {user? <p>{user}</p>: 'shit'}
-    </>
-  );
+
+
+
+  return <>{user ? <p>{user}</p> : null}</>;
 }

@@ -3,33 +3,29 @@ const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const expTime = 100000 * 30;
-
+const expireTimeDuration = 24 * 60 * 60; // 1 day
 // creates a json web token required for authentication that expires in 2 days
 const generateToken = function (id) {
-  return jwt.sign(
-    {
-      data: id,
-      exp: Math.floor(Date.now() / 1000) + 60 * 60,
-    },
-    process.env.JWS_SECRET
-  );
+  return jwt.sign({ id }, process.env.JWS_SECRET, {
+    expiresIn: expireTimeDuration,
+  });
 };
 
+// TODO: exisiting account can not register again
 module.exports.registerController = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
     const user = await User.create({ username, email, password });
     const token = generateToken(user._id);
-    res.cookie("token", token, {
-      maxAge: 1000 * 60 * 30,
-      httpOnly: true,
-      signed: true,
+    res.cookie("jwt", token, {
+      withCredentials: true,
+      httpOnly: false,
+      maxAge: expireTimeDuration * 1000,
     });
-    res.json({ registerFailed: false, user: user._id });
+    res.status(201).json({ registerFailed: false, user: user._id });
   } catch (err) {
     console.log(err);
-    res.json({ registerFailed: true, err });
+    res.status(201).json({ registerFailed: true, err });
   }
 };
 
@@ -44,7 +40,8 @@ module.exports.loginController = async (req, res, next) => {
         const token = generateToken(user._id);
         res.cookie("token", token, {
           maxAge: 1000 * 60 * 30,
-          httpOnly: true,
+          httpOnly: false,
+          withCrdentials: true,
         });
         res.status(200).json({ loggedIn: true, user: user._id });
       } else {

@@ -38,7 +38,7 @@ function Register() {
     const verifiedForm = handleFormValidation();
     if (verifiedForm){
       console.log('there');
-      const {data} = await axios.post(register_api,{username,password,email});
+      const {data} = await axios.post(register_api,{username,password,email},{withCredentials:true});
       console.log(data);
     }
     console.log("button was pressed");

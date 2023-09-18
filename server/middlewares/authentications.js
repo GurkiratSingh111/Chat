@@ -3,28 +3,25 @@ const jsonwebtoken = require("jsonwebtoken");
 module.exports.requireAuth = (req, res) => {};
 
 module.exports.verifyToken = (req, res, next) => {
-  console.log(req.cookie);
-  if (!req.cookie) {
-    console.log(":( sad");
-    res.json({ name: "empty" });
-  } else {
-    console.log(req.headers.cookie);
-    const token = req.cookie.jwt;
+  //console.log(req.cookie);
+  // why req.cookie is not working 
+
+  if(!req.headers.cookie){
+    res.status(400).json({error:"No token found"});
+  }
+  else{
+    const token = req.headers.cookie.split('=')[1];
     jsonwebtoken.verify(
       token,
       process.env.JWS_SECRET,
-      async (err, decodedUserId) => {
+      async (err, decoded) => {
         if (err) {
           // Invalid token
           console.log("verifyToken : failed decoding, invalid token");
-          res.send({ error: "Invalid token" });
+          res.status(400).send({ error: "Invalid token" });
         } else {
           console.log("verifyToken : Successful decoding");
-          console.log(`verifyToken: userId is ${decodedUserId}`);
-          req.userId = decodedUserId;
-        }
-      }
-    );
-    next();
-  }
-};
+          console.log(decoded.id);
+          req.userId = decoded.id;
+        }});}
+        next();};

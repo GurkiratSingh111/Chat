@@ -10,11 +10,13 @@ const app = express();
 // Allowing the cookies to be sent from cross origin requests
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
     credentials: true,
   })
 );
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
 app.use("/api", userRoutes);
