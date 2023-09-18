@@ -7,7 +7,13 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+// Allowing the cookies to be sent from cross origin requests
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
