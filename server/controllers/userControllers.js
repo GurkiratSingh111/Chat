@@ -67,7 +67,7 @@ module.exports.userPageController = async (req, res, next) => {
       console.log(`userPageController: no such user, you need to login`);
       res.json({ error: "no such a user, please login" });
     } else {
-      res.json({ name: user.name, email: user.email });
+      res.json({ name: user.username, email: user.email });
     }
   } catch (err) {
     console.log(

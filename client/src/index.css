@@ -4,7 +4,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Acme', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
     /*font-family: 'Black Ops One', cursive;
     font-family: 'Oswald', sans-serif;*/
 }

@@ -5,12 +5,16 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import Background from "./components/Background";
 import ErrorToast from "./components/ErrorToast";
+import NavMenu from "./components/NavMenu";
+import Footer from "./components/Footer";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Background/>
+    <NavMenu/>
     <BrowserRouter>
        <App />
+       <Footer/>
     </BrowserRouter>
   </React.StrictMode>
 );/*

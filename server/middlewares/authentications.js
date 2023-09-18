@@ -7,7 +7,7 @@ module.exports.verifyToken = (req, res, next) => {
   // why req.cookie is not working 
 
   if(!req.headers.cookie){
-    res.status(400).json({error:"No token found"});
+    res.json({error:"No token found"});
   }
   else{
     const token = req.headers.cookie.split('=')[1];
@@ -18,7 +18,7 @@ module.exports.verifyToken = (req, res, next) => {
         if (err) {
           // Invalid token
           console.log("verifyToken : failed decoding, invalid token");
-          res.status(400).send({ error: "Invalid token" });
+          res.send({ error: "Invalid token" });
         } else {
           console.log("verifyToken : Successful decoding");
           console.log(decoded.id);
