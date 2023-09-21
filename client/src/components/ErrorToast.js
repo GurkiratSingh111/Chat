@@ -6,9 +6,12 @@ export default function ErrorToast({ text, isFail,stop }) {
   const [isOver, setIsOver] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeout =setTimeout(() => {
       stop(null);
     }, 5000);
+    return ()=>{
+      clearTimeout(timeout);
+    }
   }, []);
 
   const errorToastJSX = (
